@@ -1,6 +1,6 @@
 {
   "name": "procedural-gl-react-example",
-  "version": "1.0.7",
+  "version": "1.0.0",
   "description": "Procedural Maps React Example",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "felixpalmer",
   "license": "MIT",
   "dependencies": {
-    "procedural-gl-react": "^1.0.7",
+    "procedural-gl-react": "^1.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.3.1"
   },
