@@ -1,6 +1,8 @@
 import React from 'react';
 import ProceduralMap from 'procedural-gl-react';
 
+import overlay from './overlay.js';
+
 // Define API Keys (replace these with your own!)
 const NASADEM_APIKEY = null;
 const MAPTILER_APIKEY = null;
@@ -21,13 +23,38 @@ const datasource = {
 }
 
 export default class Example extends React.Component {
+  constructor( props ) {
+    super( props );
+    this.map = React.createRef();
+  }
+
+  componentDidMount() {
+    // Once map is initialized add an overlay
+    const map = this.map.current;
+    map.addOverlay( overlay );
+  }
+
   render() {
     return React.createElement( ProceduralMap, {
+      ref: this.map,
       datasource,
+
+      // Configure UI elements to show
       compassVisible: true,
+
+      // Configure initial map location
       displayLocation: {
-        latitude: 47.5,
-        longitude: 13.55
+        latitude: 47.25,
+        longitude: 13.56
+      },
+
+      // Define callbacks
+      onFeatureClicked: id => {
+        // The id passed here is defined in the overlay
+        const map = this.map.current;
+
+        // Simply focus on the feature when clicked
+        map.focusOnFeature( id );
       }
     } );
   }
